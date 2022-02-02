@@ -1,0 +1,35 @@
+
+<div fxLayout="column">
+    <div fxFlex="0 0 40px"fxLayout="row">
+        <p>Todo Detail</p>
+    </div>
+    <div fxFlex="0 0 ８0px"fxLayout="row">
+        <div fxFlex="0 0 100px">Todo</div>
+        <div fxFlex="0 0 00px">
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>更新する内容を入力してください</mat-label>
+                <input matInput type="text" placeholder="{{(item$ | async)?.subject}}">
+            </mat-form-field>
+        </div>
+    </div>
+    <div fxFlex="0 0 40px"fxLayout="row">
+        <div fxFlex="0 0 100px">作成日</div>
+        <div fxFlex="0 0 300px">{{ (item$ | async)?.createdAt | date:"yyyy/MM/dd HH:mm" }}</div>
+    </div>
+    <div fxFlex="0 0 40px"fxLayout="row">
+        <div fxFlex="0 0 100px">更新日</div>
+        <div fxFlex="0 0 300px">{{ (item$ | async)?.updateAt | date:"yyyy/MM/dd HH:mm" }}</div>
+    </div>
+    <div fxFlex="0 0 40px"fxLayout="row">
+        <div fxFlex="0 0 100px">状態</div>
+        <div fxFlex="0 0 300px">{{ (item$ | async)?.done }}</div>
+    </div>
+    <div fxFlex="0 0 40px"fxLayout="row">
+        <div fxFlex="0 0 100px">状態の変更日</div>
+        <div fxFlex="0 0 300px">{{ (item$ | async)?.doneAt | date:"yyyy/MM/dd HH:mm" }}</div>
+    </div>
+    <div fxFlex="0 0 40px"fxLayout="row">
+        <button mat-button (click)="cancel()">Cancel</button>
+        <button mat-button (click)="ok()">Ok</button>
+    </div>
+</div>

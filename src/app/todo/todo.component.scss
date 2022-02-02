@@ -1,0 +1,16 @@
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.main-contents{
+    height:calc(100vh - 100px);
+    width:calc(100vw - 40px);
+}
+
+mat-card-actions{
+    margin-bottom: 0px !important;
+}

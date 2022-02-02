@@ -1,0 +1,57 @@
+<mat-list #TodoList>
+    <div mat-subheader>
+        Todo
+        <button mat-icon-button class="mini-icon" aria-label="reload to todo items." (click)="refresh()">
+            <mat-icon class="icon-display">refresh</mat-icon>
+        </button>
+    </div>
+    <mat-divider class="divider"></mat-divider>
+    <div class="list">
+        <mat-list-item *ngFor="let item of (list$ | async) as list">
+            <div fxLayout="row" class="item" fxLayoutAlign="center center">
+                <button fxFlex="0 0 40px" mat-icon-button aria-label="Complate the item" (click)="toggle(item)">
+                    <mat-icon>circle</mat-icon>
+                </button>
+
+                <span fxFlex="grow">{{item.subject}}</span>
+                
+                <button fxFlex="0 0 40px" mat-icon-button aria-label="Delete the item." (click)="delete(item)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+                <button fxFlex="0 0 40px" mat-icon-button aria-label="View Detail" (click)="detail(item)">
+                    <mat-icon>info</mat-icon>
+                </button>
+            </div>
+        </mat-list-item>
+    </div>
+
+    <div mat-subheader>Complate ({{(doneList$ | async)?.length}})
+        <button mat-icon-button *ngIf="!isExpand" aria-label="expand more" (click)="expand()">
+            <mat-icon>expand_more</mat-icon>
+        </button>
+        <button mat-icon-button *ngIf="isExpand" aria-label="expand less" (click)="expand()">
+            <mat-icon>expand_less</mat-icon>
+        </button>
+    </div>
+    
+    <mat-divider class="divider"></mat-divider>
+    <ng-container *ngIf="isExpand">
+        <mat-list-item *ngFor="let item of (doneList$ | async) as doneList">
+            <div fxLayout="row" class="item" fxLayoutAlign="center center">
+                <button fxFlex="0 0 40px" mat-icon-button aria-label="Return the task to completion." (click)="toggle(item)">
+                    <mat-icon>done</mat-icon>
+                </button>
+    
+                <span fxFlex="grow">{{item.subject}}</span>
+                
+                <button fxFlex="0 0 40px" mat-icon-button aria-label="Delete the item." (click)="delete(item)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+                <button fxFlex="0 0 40px" mat-icon-button aria-label="View Detail" (click)="detail(item)">
+                    <mat-icon>info</mat-icon>
+                </button>
+            </div>
+        </mat-list-item>
+    </ng-container>
+
+</mat-list>

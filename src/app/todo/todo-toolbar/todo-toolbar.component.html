@@ -1,0 +1,31 @@
+<mat-toolbar>
+    <div fxLayout="row" class="container" fxLayoutAlign="center center">
+
+        <div fxFlex="grow">
+            <input matInput class="todo-input"[(ngModel)]="value" type="text">
+        </div>
+        <button fxFlex="0 0 55px" color="primary" mat-fab aria-label="add to todo items." (click)="add()">
+            <mat-icon>add</mat-icon>
+        </button>
+        <button fxFlex="0 0 40px" mat-icon-button aria-label="reload to todo items." (click)="refresh()">
+            <mat-icon>refresh</mat-icon>
+        </button>
+        <div fxFlex="{{sortFlex}}">
+            <mat-button-toggle-group *ngIf="sortFlex==sort[1]" multiple name="sort" aria-label="Sort">
+                <mat-button-toggle value="name">name</mat-button-toggle>
+                <mat-button-toggle value="create">createAt</mat-button-toggle>
+                <mat-button-toggle value="blue">updateAt</mat-button-toggle>
+            </mat-button-toggle-group>
+            <button mat-icon-button aria-label="sort to todo items." (click)="toggleSort()">
+                <mat-icon>sort</mat-icon>
+            </button>
+        </div>
+
+        <div fxFlex="{{searchFlex}}">
+            <input *ngIf="searchFlex==search[1]" matInput type="text">
+            <button mat-icon-button aria-label="add to todo items." (click)="toggleSearch()">
+                <mat-icon>search</mat-icon>
+            </button>
+        </div>
+    </div>
+</mat-toolbar>
